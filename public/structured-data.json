@@ -1,0 +1,98 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Voicetudu",
+      "url": "https://voicetudu.com",
+      "description": "Aplicación web de transcripción de audio con IA que convierte audio a texto, genera resúmenes, extrae tareas y crea emails profesionales",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Transcripción de audio con IA",
+        "Generación de resúmenes automáticos",
+        "Extracción de tareas accionables",
+        "Creación de emails profesionales",
+        "Soporte para múltiples formatos de audio"
+      ],
+      "screenshot": "https://voicetudu.com/screenshot.png",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "250"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "Voicetudu",
+      "url": "https://voicetudu.com",
+      "logo": "https://voicetudu.com/logo.png",
+      "sameAs": [
+        "https://twitter.com/voicetudu",
+        "https://linkedin.com/company/voicetudu"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Voicetudu",
+      "url": "https://voicetudu.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://voicetudu.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Voicetudu",
+      "applicationCategory": "Productivity",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es Voicetudu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Voicetudu es una aplicación web que utiliza inteligencia artificial para transcribir audio a texto, generar resúmenes, extraer tareas y crear emails profesionales automáticamente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué formatos de audio soporta Voicetudu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Voicetudu soporta múltiples formatos de audio incluyendo MP3, WAV, M4A, OGG y WEBM. El tamaño máximo permitido es de 25MB por archivo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es gratis usar Voicetudu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, Voicetudu ofrece una versión gratuita que permite transcribir audio a texto sin necesidad de registro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo funciona la transcripción de audio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Voicetudu utiliza la tecnología OpenAI Whisper para transcribir audio a texto con alta precisión. Luego, usa GPT-4o para analizar el contenido y generar resúmenes, tareas y emails."
+          }
+        }
+      ]
+    }
+  ]
+}

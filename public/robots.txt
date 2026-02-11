@@ -1,0 +1,16 @@
+# Voicetudu robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemaps
+Sitemap: https://voicetudu.com/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 10
+
+# Block bad bots (optional)
+User-agent: AhrefsBot
+User-agent: SemrushBot
+Crawl-delay: 60
