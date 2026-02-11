@@ -1,35 +1,23 @@
-app = "voicetudu-web"
-primary_region = "mia" # Miami - cercano a Colombia y Latinoamérica
+# fly.toml app configuration file generated for voicetudu-frontend on 2026-02-11T06:58:51Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'voicetudu-frontend'
+primary_region = 'ams'
 
 [build]
-  dockerfile = "Dockerfile"
-
-[env]
-  NODE_ENV = "production"
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
-  min_machines_running = 1
-
-[[http_service.checks]]
-  grace_period = "10s"
-  interval = "30s"
-  method = "GET"
-  timeout = "5s"
-  path = "/health"
-
-[compute]
-  size = "shared-cpu-1x"
-  memory = "256mb"
+  min_machines_running = 0
+  processes = ['app']
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "256mb"
-
-# Scaling configuration
-[deploy]
-  strategy = "rolling"
-  max_unavailable = 0
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 256
