@@ -1,18 +1,22 @@
 /**
  * Header Component
- * Displays the Voicetudu logo and branding
+ * Displays the Voicetudu logo and branding with language switcher
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from '../Language/LanguageSwitcher';
 
 /**
- * Header component with logo
+ * Header component with logo and language switcher
  */
 export function Header() {
+  const { t } = useTranslation('common');
+
   return (
     <header className="w-full bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-center sm:justify-start">
+        <div className="flex items-center justify-between">
           {/* Logo with microphone icon */}
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -37,13 +41,16 @@ export function Header() {
             {/* Brand name */}
             <div>
               <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                Voicetudu
+                {t('app.name')}
               </h1>
               <p className="text-xs text-gray-500 hidden sm:block">
-                Transcripción inteligente de audio
+                {t('app.tagline')}
               </p>
             </div>
           </div>
+
+          {/* Language Switcher */}
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

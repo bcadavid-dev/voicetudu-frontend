@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Header } from './components/Layout/Header';
 import { Footer } from './components/Layout/Footer';
 import { UploadZone } from './components/Upload/UploadZone';
@@ -25,6 +26,7 @@ import { useUpload } from './hooks/useUpload';
  */
 
 function App() {
+  const { t } = useTranslation('upload');
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadState, setUploadState] = useState('idle');
   const [result, setResult] = useState(null);
@@ -138,10 +140,10 @@ function App() {
           <div className="flex flex-col items-center justify-center py-12">
             <LoadingSpinner 
               size="large" 
-              text="Transcribiendo y analizando..."
+              text={t('progress.transcribing')}
             />
             <p className="mt-4 text-gray-600 text-center">
-              Esto puede tomar unos segundos
+              {t('progress.waitMessage')}
             </p>
           </div>
         );

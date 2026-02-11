@@ -4,19 +4,12 @@
  */
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TranscriptionTab } from './TranscriptionTab';
 import { SummaryTab } from './SummaryTab';
 import { TasksTab } from './TasksTab';
 import { EmailTab } from './EmailTab';
 import { Button } from '../Common/Button';
-
-// Tab definitions
-const TABS = [
-  { id: 'summary', label: 'Resumen', icon: '📝' },
-  { id: 'tasks', label: 'Tareas', icon: '✓' },
-  { id: 'email', label: 'Email', icon: '✉' },
-  { id: 'transcription', label: 'Transcripción', icon: '🎵' }
-];
 
 /**
  * Results container component
@@ -25,9 +18,18 @@ const TABS = [
  * @param {Function} props.onReset - Reset handler
  */
 export function ResultsContainer({ data, onReset }) {
+  const { t } = useTranslation('results');
   const [activeTab, setActiveTab] = useState('summary');
 
   const { transcription, summary, tasks, email } = data;
+
+  // Tab definitions
+  const TABS = [
+    { id: 'summary', label: t('tabs.summary'), icon: '📝' },
+    { id: 'tasks', label: t('tabs.tasks'), icon: '✓' },
+    { id: 'email', label: t('tabs.email'), icon: '✉' },
+    { id: 'transcription', label: t('tabs.transcription'), icon: '🎵' }
+  ];
 
   /**
    * Renders content for active tab
@@ -53,10 +55,10 @@ export function ResultsContainer({ data, onReset }) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
           <h2 className="text-xl font-bold text-gray-900">
-            Resultados del Análisis
+            {t('container.title')}
           </h2>
           <p className="text-sm text-gray-500">
-            Audio procesado exitosamente
+            {t('container.successMessage')}
           </p>
         </div>
         
@@ -77,7 +79,7 @@ export function ResultsContainer({ data, onReset }) {
               clipRule="evenodd" 
             />
           </svg>
-          Nuevo audio
+          {t('container.newAudio')}
         </Button>
       </div>
 
@@ -86,7 +88,7 @@ export function ResultsContainer({ data, onReset }) {
         <nav 
           className="flex gap-1 overflow-x-auto scrollbar-hide"
           role="tablist"
-          aria-label="Resultados"
+          aria-label={t('container.title')}
         >
           {TABS.map((tab) => (
             <button

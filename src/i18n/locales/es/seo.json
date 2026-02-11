@@ -1,0 +1,14 @@
+{
+  "default": {
+    "title": "Voicetudu - Transcripción de Audio con IA",
+    "description": "Transcribe audio a texto al instante con IA. Genera resúmenes, extrae tareas y crea emails profesionales desde tus archivos de audio.",
+    "keywords": "transcripción de audio, audio a texto, speech to text, transcribir audio, IA transcripción"
+  },
+  "pages": {
+    "home": {
+      "title": "Voicetudu - Transcripción de Audio con IA",
+      "description": "Transcribe audio a texto al instante con IA. Genera resúmenes, extrae tareas y crea emails profesionales desde tus archivos de audio. Gratis y sin registro.",
+      "keywords": "transcripción de audio, audio a texto, speech to text español, transcribir audio online"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "container": {
+    "title": "Resultados del Análisis",
+    "successMessage": "Audio procesado exitosamente",
+    "newAudio": "Nuevo audio"
+  },
+  "tabs": {
+    "summary": "Resumen",
+    "tasks": "Tareas",
+    "email": "Email",
+    "transcription": "Transcripción"
+  },
+  "summary": {
+    "title": "Resumen Ejecutivo",
+    "empty": "No hay resumen disponible.",
+    "info": "Este es un resumen generado automáticamente por IA basado en el contenido del audio."
+  },
+  "tasks": {
+    "title": "Tareas Detectadas",
+    "empty": {
+      "title": "No se encontraron tareas",
+      "description": "El audio no contiene acciones específicas para realizar."
+    },
+    "progress": "Progreso",
+    "completed": "{{completed}} de {{total}} completadas",
+    "completeAll": "Marcar todas",
+    "uncheckAll": "Desmarcar todas"
+  },
+  "email": {
+    "title": "Email Generado",
+    "empty": {
+      "title": "No se generó email",
+      "description": "No se pudo generar un email basado en el contenido del audio."
+    },
+    "copyAll": "Copiar todo",
+    "subject": "Asunto",
+    "body": "Cuerpo",
+    "tip": "Este email fue generado automáticamente por IA. Revisa y personaliza el contenido antes de enviarlo."
+  },
+  "transcription": {
+    "title": "Transcripción Completa",
+    "empty": "No hay transcripción disponible.",
+    "words": "{{count}} palabras",
+    "words_plural": "{{count}} palabras"
+  }
+}

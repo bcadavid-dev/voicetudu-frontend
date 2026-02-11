@@ -4,6 +4,7 @@
  */
 
 import React, { useCallback, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Maximum file size in MB
 const MAX_FILE_SIZE_MB = 25;
@@ -28,6 +29,7 @@ const ALLOWED_EXTENSIONS = ['.mp3', '.wav', '.m4a', '.ogg', '.webm'];
  * @param {boolean} props.isLoading - Loading state
  */
 export function UploadZone({ onFileSelect, isLoading }) {
+  const { t } = useTranslation('upload');
   const [isDragActive, setIsDragActive] = useState(false);
   const [error, setError] = useState(null);
   const inputRef = useRef(null);
@@ -42,7 +44,7 @@ export function UploadZone({ onFileSelect, isLoading }) {
 
     // Check if file exists
     if (!file) {
-      setError('No se seleccionó ningún archivo');
+      setError(t('errors.noFile'));
       return false;
     }
 
@@ -53,19 +55,19 @@ export function UploadZone({ onFileSelect, isLoading }) {
       );
 
     if (!isValidType) {
-      setError('Formato no válido. Usa: MP3, WAV, M4A, OGG o WEBM');
+      setError(t('errors.invalidFormat'));
       return false;
     }
 
     // Check file size
     const maxBytes = MAX_FILE_SIZE_MB * 1024 * 1024;
     if (file.size > maxBytes) {
-      setError(`El archivo excede ${MAX_FILE_SIZE_MB}MB`);
+      setError(t('errors.fileTooLarge', { size: MAX_FILE_SIZE_MB }));
       return false;
     }
 
     return true;
-  }, []);
+  }, [t]);
 
   /**
    * Handles file selection
@@ -155,7 +157,7 @@ export function UploadZone({ onFileSelect, isLoading }) {
             openFileDialog();
           }
         }}
-        aria-label="Seleccionar archivo de audio"
+        aria-label={t('zone.ariaLabel')}
       >
         {/* Icon */}
         <div className="mb-4">
@@ -177,10 +179,10 @@ export function UploadZone({ onFileSelect, isLoading }) {
 
         {/* Text */}
         <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          Arrastra tu archivo de audio aquí
+          {t('zone.title')}
         </h3>
         <p className="text-gray-500 mb-4">
-          o haz clic para seleccionar
+          {t('zone.subtitle')}
         </p>
 
         {/* Supported formats */}
@@ -194,7 +196,7 @@ export function UploadZone({ onFileSelect, isLoading }) {
 
         {/* Size limit */}
         <p className="mt-4 text-xs text-gray-400">
-          Máximo {MAX_FILE_SIZE_MB}MB • Máximo 10 minutos
+          {t('zone.maxSize', { size: MAX_FILE_SIZE_MB })} • {t('zone.maxDuration', { minutes: 10 })}
         </p>
       </div>
 

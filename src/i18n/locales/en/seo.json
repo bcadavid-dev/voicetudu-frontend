@@ -1,0 +1,14 @@
+{
+  "default": {
+    "title": "Voicetudu - AI Audio Transcription",
+    "description": "Transcribe audio to text instantly with AI. Generate summaries, extract tasks, and create professional emails from your audio files.",
+    "keywords": "audio transcription, speech to text, voice to text, AI transcription, transcribe audio"
+  },
+  "pages": {
+    "home": {
+      "title": "Voicetudu - AI Audio Transcription",
+      "description": "Transcribe audio to text instantly with AI. Generate summaries, extract tasks, and create professional emails from your audio files. Free and no registration.",
+      "keywords": "audio transcription, speech to text, voice to text english, transcribe audio online"
+    }
+  }
+}

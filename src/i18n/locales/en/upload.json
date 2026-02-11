@@ -1,0 +1,35 @@
+{
+  "zone": {
+    "title": "Drag your audio file here",
+    "subtitle": "or click to select",
+    "formats": "Supported formats: MP3, WAV, M4A, OGG, WEBM",
+    "maxSize": "Maximum {{size}}MB",
+    "maxDuration": "Maximum {{minutes}} minutes",
+    "ariaLabel": "Select audio file"
+  },
+  "errors": {
+    "noFile": "No file selected",
+    "invalidFormat": "Invalid format. Use: MP3, WAV, M4A, OGG or WEBM",
+    "fileTooLarge": "File exceeds {{size}}MB",
+    "audioTooLong": "Audio exceeds duration limit",
+    "transcriptionError": "Transcription error",
+    "analysisError": "Analysis error",
+    "networkError": "Connection error",
+    "rateLimit": "Too many requests",
+    "timeout": "Request timeout",
+    "apiQuotaExceeded": "API quota exceeded"
+  },
+  "preview": {
+    "title": "Preview",
+    "audioNotSupported": "Your browser does not support audio playback.",
+    "processButton": "Process Audio",
+    "infoText": "When processed, the audio will be transcribed and analyzed with AI"
+  },
+  "progress": {
+    "uploading": "Uploading file...",
+    "processing": "Processing audio...",
+    "transcribing": "Transcribing and analyzing...",
+    "waitMessage": "This may take a few seconds",
+    "largeFileWarning": "Large files may take longer to upload. Please don't close this page."
+  }
+}

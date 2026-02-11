@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Email tab component
@@ -13,6 +14,7 @@ import React, { useState, useCallback } from 'react';
  * @param {string} props.email.body - Email body
  */
 export function EmailTab({ email = {} }) {
+  const { t } = useTranslation(['results', 'common']);
   const [copied, setCopied] = useState(false);
   const [copiedField, setCopiedField] = useState(null);
 
@@ -22,7 +24,7 @@ export function EmailTab({ email = {} }) {
    * Copies full email to clipboard
    */
   const handleCopyFull = useCallback(async () => {
-    const fullEmail = `Asunto: ${subject}\n\n${body}`;
+    const fullEmail = `${t('results:email.subject')}: ${subject}\n\n${body}`;
     try {
       await navigator.clipboard.writeText(fullEmail);
       setCopied(true);
@@ -30,7 +32,7 @@ export function EmailTab({ email = {} }) {
     } catch (err) {
       console.error('Failed to copy:', err);
     }
-  }, [subject, body]);
+  }, [subject, body, t]);
 
   /**
    * Copies specific field to clipboard
@@ -62,10 +64,10 @@ export function EmailTab({ email = {} }) {
           </svg>
         </div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">
-          No se generó email
+          {t('results:email.empty.title')}
         </h3>
         <p className="text-gray-500">
-          No se pudo generar un email basado en el contenido del audio.
+          {t('results:email.empty.description')}
         </p>
       </div>
     );
@@ -76,7 +78,7 @@ export function EmailTab({ email = {} }) {
       {/* Header with copy buttons */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h3 className="text-lg font-semibold text-gray-900">
-          Email Generado
+          {t('results:email.title')}
         </h3>
         <button
           onClick={handleCopyFull}
@@ -100,7 +102,7 @@ export function EmailTab({ email = {} }) {
                   clipRule="evenodd" 
                 />
               </svg>
-              Copiado
+              {t('common:actions.copied')}
             </>
           ) : (
             <>
@@ -113,7 +115,7 @@ export function EmailTab({ email = {} }) {
                 <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
                 <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
               </svg>
-              Copiar todo
+              {t('results:email.copyAll')}
             </>
           )}
         </button>
@@ -122,7 +124,7 @@ export function EmailTab({ email = {} }) {
       {/* Subject */}
       <div className="bg-gray-50 rounded-lg p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-gray-600">Asunto:</span>
+          <span className="text-sm font-medium text-gray-600">{t('results:email.subject')}:</span>
           <button
             onClick={() => handleCopyField('subject')}
             className={`text-xs px-2 py-1 rounded transition-colors ${
@@ -131,7 +133,7 @@ export function EmailTab({ email = {} }) {
                 : 'text-gray-500 hover:bg-gray-200'
             }`}
           >
-            {copiedField === 'subject' ? 'Copiado' : 'Copiar'}
+            {copiedField === 'subject' ? t('common:actions.copied') : t('common:actions.copy')}
           </button>
         </div>
         <p className="text-gray-900 font-medium">{subject}</p>
@@ -140,7 +142,7 @@ export function EmailTab({ email = {} }) {
       {/* Body */}
       <div className="bg-gray-50 rounded-lg p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-gray-600">Cuerpo:</span>
+          <span className="text-sm font-medium text-gray-600">{t('results:email.body')}:</span>
           <button
             onClick={() => handleCopyField('body')}
             className={`text-xs px-2 py-1 rounded transition-colors ${
@@ -149,7 +151,7 @@ export function EmailTab({ email = {} }) {
                 : 'text-gray-500 hover:bg-gray-200'
             }`}
           >
-            {copiedField === 'body' ? 'Copiado' : 'Copiar'}
+            {copiedField === 'body' ? t('common:actions.copied') : t('common:actions.copy')}
           </button>
         </div>
         <p className="text-gray-700 whitespace-pre-wrap">{body}</p>
@@ -171,8 +173,7 @@ export function EmailTab({ email = {} }) {
             />
           </svg>
           <p className="text-sm text-blue-700">
-            Este email fue generado automáticamente por IA. 
-            Revisa y personaliza el contenido antes de enviarlo.
+            {t('results:email.tip')}
           </p>
         </div>
       </div>

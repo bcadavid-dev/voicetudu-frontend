@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Summary tab component
@@ -11,6 +12,7 @@ import React, { useState, useCallback } from 'react';
  * @param {string} props.text - Summary text
  */
 export function SummaryTab({ text }) {
+  const { t } = useTranslation(['results', 'common']);
   const [copied, setCopied] = useState(false);
 
   /**
@@ -31,7 +33,7 @@ export function SummaryTab({ text }) {
       {/* Header with copy button */}
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold text-gray-900">
-          Resumen Ejecutivo
+          {t('results:summary.title')}
         </h3>
         <button
           onClick={handleCopy}
@@ -55,7 +57,7 @@ export function SummaryTab({ text }) {
                   clipRule="evenodd" 
                 />
               </svg>
-              Copiado
+              {t('common:actions.copied')}
             </>
           ) : (
             <>
@@ -68,7 +70,7 @@ export function SummaryTab({ text }) {
                 <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
                 <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
               </svg>
-              Copiar
+              {t('common:actions.copy')}
             </>
           )}
         </button>
@@ -92,14 +94,14 @@ export function SummaryTab({ text }) {
             </svg>
           </div>
           <p className="text-gray-700 leading-relaxed">
-            {text || 'No hay resumen disponible.'}
+            {text || t('results:summary.empty')}
           </p>
         </div>
       </div>
 
       {/* Info */}
       <p className="text-sm text-gray-500">
-        Este es un resumen generado automáticamente por IA basado en el contenido del audio.
+        {t('results:summary.info')}
       </p>
     </div>
   );

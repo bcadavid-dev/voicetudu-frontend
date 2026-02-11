@@ -8,16 +8,26 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "keywords": ["transcription", "react", "audio", "ai", "speech-to-text"],
+  "keywords": [
+    "transcription",
+    "react",
+    "audio",
+    "ai",
+    "speech-to-text"
+  ],
   "author": "Voicetudu Team",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.2",
+    "i18next": "^25.8.4",
+    "i18next-browser-languagedetector": "^8.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet-async": "^2.0.4"
+    "react-helmet-async": "^2.0.4",
+    "react-i18next": "^16.5.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",

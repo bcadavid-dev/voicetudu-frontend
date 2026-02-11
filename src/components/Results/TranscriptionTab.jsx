@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Transcription tab component
@@ -11,6 +12,7 @@ import React, { useState, useCallback } from 'react';
  * @param {string} props.text - Transcription text
  */
 export function TranscriptionTab({ text }) {
+  const { t } = useTranslation(['results', 'common']);
   const [copied, setCopied] = useState(false);
 
   /**
@@ -26,12 +28,15 @@ export function TranscriptionTab({ text }) {
     }
   }, [text]);
 
+  // Calculate word count
+  const wordCount = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
+
   return (
     <div className="space-y-4">
       {/* Header with copy button */}
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold text-gray-900">
-          Transcripción Completa
+          {t('results:transcription.title')}
         </h3>
         <button
           onClick={handleCopy}
@@ -55,7 +60,7 @@ export function TranscriptionTab({ text }) {
                   clipRule="evenodd" 
                 />
               </svg>
-              Copiado
+              {t('common:actions.copied')}
             </>
           ) : (
             <>
@@ -68,7 +73,7 @@ export function TranscriptionTab({ text }) {
                 <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
                 <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
               </svg>
-              Copiar
+              {t('common:actions.copy')}
             </>
           )}
         </button>
@@ -77,13 +82,13 @@ export function TranscriptionTab({ text }) {
       {/* Transcription text */}
       <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
         <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-          {text || 'No hay transcripción disponible.'}
+          {text || t('results:transcription.empty')}
         </p>
       </div>
 
       {/* Word count */}
       <p className="text-sm text-gray-500 text-right">
-        {text ? `${text.split(/\s+/).filter(w => w.length > 0).length} palabras` : ''}
+        {text ? t('results:transcription.words', { count: wordCount }) : ''}
       </p>
     </div>
   );

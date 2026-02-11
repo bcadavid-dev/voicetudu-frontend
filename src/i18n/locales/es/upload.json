@@ -1,0 +1,35 @@
+{
+  "zone": {
+    "title": "Arrastra tu archivo de audio aquí",
+    "subtitle": "o haz clic para seleccionar",
+    "formats": "Formatos soportados: MP3, WAV, M4A, OGG, WEBM",
+    "maxSize": "Máximo {{size}}MB",
+    "maxDuration": "Máximo {{minutes}} minutos",
+    "ariaLabel": "Seleccionar archivo de audio"
+  },
+  "errors": {
+    "noFile": "No se seleccionó ningún archivo",
+    "invalidFormat": "Formato no válido. Usa: MP3, WAV, M4A, OGG o WEBM",
+    "fileTooLarge": "El archivo excede {{size}}MB",
+    "audioTooLong": "El audio excede el límite de duración",
+    "transcriptionError": "Error en la transcripción",
+    "analysisError": "Error en el análisis",
+    "networkError": "Error de conexión",
+    "rateLimit": "Demasiadas solicitudes",
+    "timeout": "Tiempo de espera agotado",
+    "apiQuotaExceeded": "Cuota de API agotada"
+  },
+  "preview": {
+    "title": "Vista previa",
+    "audioNotSupported": "Tu navegador no soporta la reproducción de audio.",
+    "processButton": "Procesar Audio",
+    "infoText": "Al procesar, el audio será transcrito y analizado con IA"
+  },
+  "progress": {
+    "uploading": "Subiendo archivo...",
+    "processing": "Procesando audio...",
+    "transcribing": "Transcribiendo y analizando...",
+    "waitMessage": "Esto puede tomar unos segundos",
+    "largeFileWarning": "Los archivos grandes pueden tardar más en subir. Por favor, no cierres esta página."
+  }
+}

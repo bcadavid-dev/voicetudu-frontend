@@ -4,6 +4,7 @@
  */
 
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../Common/Button';
 
 /**
@@ -54,6 +55,8 @@ function getFileIcon(fileName) {
  * @param {boolean} props.isLoading - Loading state
  */
 export function AudioPreview({ file, onUpload, onRemove, isLoading }) {
+  const { t } = useTranslation(['upload', 'common']);
+  
   const fileInfo = useMemo(() => ({
     name: file.name,
     size: formatFileSize(file.size),
@@ -88,14 +91,14 @@ export function AudioPreview({ file, onUpload, onRemove, isLoading }) {
         {/* Audio preview */}
         <div className="mb-6">
           <p className="text-sm font-medium text-gray-700 mb-2">
-            Vista previa:
+            {t('preview.title')}:
           </p>
           <audio 
             controls 
             className="w-full"
             src={URL.createObjectURL(file)}
           >
-            Tu navegador no soporta la reproducción de audio.
+            {t('preview.audioNotSupported')}
           </audio>
         </div>
 
@@ -122,7 +125,7 @@ export function AudioPreview({ file, onUpload, onRemove, isLoading }) {
                 />
               </svg>
             )}
-            Procesar Audio
+            {t('preview.processButton')}
           </Button>
 
           <Button
@@ -142,14 +145,14 @@ export function AudioPreview({ file, onUpload, onRemove, isLoading }) {
                 clipRule="evenodd" 
               />
             </svg>
-            Cancelar
+            {t('common:actions.cancel')}
           </Button>
         </div>
       </div>
 
       {/* Info text */}
       <p className="mt-4 text-sm text-gray-500 text-center">
-        Al procesar, el audio será transcrito y analizado con IA
+        {t('preview.infoText')}
       </p>
     </div>
   );

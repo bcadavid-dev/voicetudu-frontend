@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Error message component
@@ -13,21 +14,23 @@ import React from 'react';
  * @param {Function} props.onReset - Reset handler
  */
 export function ErrorMessage({ error, onRetry, onReset }) {
+  const { t } = useTranslation(['upload', 'common']);
+
   // Error messages by code
   const errorMessages = {
-    INVALID_FORMAT: 'Formato de archivo no válido',
-    FILE_TOO_LARGE: 'El archivo es demasiado grande',
-    AUDIO_TOO_LONG: 'El audio excede el límite de duración',
-    TRANSCRIPTION_ERROR: 'Error en la transcripción',
-    ANALYSIS_ERROR: 'Error en el análisis',
-    NETWORK_ERROR: 'Error de conexión',
-    RATE_LIMIT: 'Demasiadas solicitudes',
-    TIMEOUT: 'Tiempo de espera agotado',
-    API_QUOTA_EXCEEDED: 'Cuota de API agotada'
+    INVALID_FORMAT: t('upload:errors.invalidFormat'),
+    FILE_TOO_LARGE: t('upload:errors.fileTooLarge', { size: 25 }),
+    AUDIO_TOO_LONG: t('upload:errors.audioTooLong'),
+    TRANSCRIPTION_ERROR: t('upload:errors.transcriptionError'),
+    ANALYSIS_ERROR: t('upload:errors.analysisError'),
+    NETWORK_ERROR: t('upload:errors.networkError'),
+    RATE_LIMIT: t('upload:errors.rateLimit'),
+    TIMEOUT: t('upload:errors.timeout'),
+    API_QUOTA_EXCEEDED: t('upload:errors.apiQuotaExceeded')
   };
 
-  const title = errorMessages[error?.code] || 'Ha ocurrido un error';
-  const message = error?.message || 'Por favor, inténtalo de nuevo';
+  const title = errorMessages[error?.code] || t('common:errors.unknown');
+  const message = error?.message || t('common:errors.tryAgain');
 
   return (
     <div className="flex flex-col items-center justify-center py-8 px-4">
@@ -76,7 +79,7 @@ export function ErrorMessage({ error, onRetry, onReset }) {
                 clipRule="evenodd" 
               />
             </svg>
-            Reintentar
+            {t('common:actions.retry')}
           </button>
         )}
         
@@ -97,7 +100,7 @@ export function ErrorMessage({ error, onRetry, onReset }) {
                 clipRule="evenodd" 
               />
             </svg>
-            Subir otro archivo
+            {t('common:errors.uploadAnother')}
           </button>
         )}
       </div>

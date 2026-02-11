@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "Voicetudu",
+    "tagline": "Transcripción inteligente de audio"
+  },
+  "footer": {
+    "copyright": "© {{year}} Voicetudu. Todos los derechos reservados.",
+    "poweredBy": "Powered by",
+    "and": "&"
+  },
+  "loading": "Cargando",
+  "actions": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "back": "Volver"
+  },
+  "errors": {
+    "unknown": "Ha ocurrido un error",
+    "tryAgain": "Por favor, inténtalo de nuevo",
+    "uploadAnother": "Subir otro archivo"
+  },
+  "language": {
+    "select": "Seleccionar idioma",
+    "es": "Español",
+    "en": "English"
+  }
+}

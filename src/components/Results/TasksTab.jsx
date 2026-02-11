@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Tasks tab component
@@ -11,6 +12,7 @@ import React, { useState, useCallback } from 'react';
  * @param {string[]} props.tasks - Array of task strings
  */
 export function TasksTab({ tasks = [] }) {
+  const { t } = useTranslation('results');
   const [completedTasks, setCompletedTasks] = useState(new Set());
 
   /**
@@ -61,10 +63,10 @@ export function TasksTab({ tasks = [] }) {
           </svg>
         </div>
         <h3 className="text-lg font-medium text-gray-900 mb-2">
-          No se encontraron tareas
+          {t('tasks.empty.title')}
         </h3>
         <p className="text-gray-500">
-          El audio no contiene acciones específicas para realizar.
+          {t('tasks.empty.description')}
         </p>
       </div>
     );
@@ -79,17 +81,17 @@ export function TasksTab({ tasks = [] }) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-900">
-            Tareas Detectadas
+            {t('tasks.title')}
           </h3>
           <p className="text-sm text-gray-500">
-            {completedCount} de {tasks.length} completadas
+            {t('tasks.completed', { completed: completedCount, total: tasks.length })}
           </p>
         </div>
         
         {/* Progress bar */}
         <div className="w-full sm:w-48">
           <div className="flex items-center justify-between text-sm mb-1">
-            <span className="text-gray-600">Progreso</span>
+            <span className="text-gray-600">{t('tasks.progress')}</span>
             <span className="font-medium text-primary-600">{progress}%</span>
           </div>
           <div className="progress-bar">
@@ -135,13 +137,13 @@ export function TasksTab({ tasks = [] }) {
           onClick={completeAll}
           className="px-3 py-1.5 text-sm font-medium text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
         >
-          Marcar todas
+          {t('tasks.completeAll')}
         </button>
         <button
           onClick={clearCompleted}
           className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
         >
-          Desmarcar todas
+          {t('tasks.uncheckAll')}
         </button>
       </div>
     </div>

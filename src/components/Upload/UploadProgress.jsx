@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Upload progress component
@@ -13,9 +14,11 @@ import React from 'react';
  * @param {string} [props.stage='uploading'] - Current stage (uploading, processing)
  */
 export function UploadProgress({ progress, fileName, stage = 'uploading' }) {
+  const { t } = useTranslation('upload');
+
   const stageText = stage === 'uploading' 
-    ? 'Subiendo archivo...' 
-    : 'Procesando audio...';
+    ? t('progress.uploading') 
+    : t('progress.processing');
 
   return (
     <div className="flex flex-col items-center justify-center py-12">
@@ -94,7 +97,7 @@ export function UploadProgress({ progress, fileName, stage = 'uploading' }) {
       {/* Warning for large files */}
       {progress < 100 && progress > 50 && (
         <p className="mt-4 text-xs text-gray-400 text-center max-w-xs">
-          Los archivos grandes pueden tardar más en subir. Por favor, no cierres esta página.
+          {t('progress.largeFileWarning')}
         </p>
       )}
     </div>
