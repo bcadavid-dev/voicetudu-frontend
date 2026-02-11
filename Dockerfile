@@ -43,11 +43,17 @@ COPY --from=build /app/public /usr/share/nginx/html
 RUN addgroup --system --gid 1001 nginx-group && \
     adduser --system --uid 1001 --ingroup nginx-group nginx-user
 
-# Set proper permissions
-RUN chown -R nginx-user:nginx-group /usr/share/nginx/html && \
+# Create nginx runtime directory with proper permissions
+RUN mkdir -p /run/nginx && \
+    chown -R nginx-user:nginx-group /run/nginx && \
+    chown -R nginx-user:nginx-group /usr/share/nginx/html && \
     chown -R nginx-user:nginx-group /var/cache/nginx && \
     chown -R nginx-user:nginx-group /var/log/nginx && \
     chown -R nginx-user:nginx-group /etc/nginx/conf.d
+
+# Create writable temp directories for nginx
+RUN mkdir -p /tmp/nginx/client_temp /tmp/nginx/proxy_temp /tmp/nginx/fastcgi_temp /tmp/nginx/uwsgi_temp /tmp/nginx/scgi_temp && \
+    chown -R nginx-user:nginx-group /tmp/nginx
 
 # Switch to non-root user
 USER nginx-user
@@ -60,4 +66,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
 
 # Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off; pid /run/nginx/nginx.pid;", "-c", "/etc/nginx/nginx.conf"]
